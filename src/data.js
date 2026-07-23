@@ -2,10 +2,10 @@ export const PORTFOLIO_DATA = {
     profile: {
         name: "이호성",
         title: "Web Developer",
-        bio: "5년 차 웹개발자 이호성입니다. 안정적이고 확장 가능한 Web Application 구축에 관심이 많습니다.",
-        email: "tmvkr0723@gmail.com", // 본인 이메일로 수정
-        github: "https://github.com/tmvkr", // 본인 GitHub 주소로 수정
-        blog: "https://velog.io", // 블로그나 링크드인이 있다면 추가
+        bio: "5년차 웹개발자 이호성입니다. 안정적이고 확장 가능한 Web Application 구축에 관심이 많습니다.",
+        email: "tmvkrpdla@naver.com",
+        github: "https://github.com/tmvkrpdla",
+        // blog: "https://velog.io", // 블로그나 링크드인이 있다면 추가
     },
     skills: [
         { name: "JavaScript / ES6+", level: "Advanced" },

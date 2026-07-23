@@ -1,26 +1,34 @@
 /* ==========================================
-   1. 테마 변수 정의 (라이트 / 다크)
+   1. 테마 변수 정의 (라이트 디폴트)
    ========================================== */
 :root {
-  /* 라이트 모드 (기본값) */
-  --bg-color: #f8fafc;
-  --text-main: #0f172a;
-  --text-sub: #64748b;
+  --bg-main: #ffffff;
+  --bg-nav: rgba(255, 255, 255, 0.9);
+  --text-main: #212529;
+  --text-sub: #6c757d;
+  --text-title: #adb5bd;
+  --accent-blue: #3b82f6;
+  --border-color: #e9ecef;
   --card-bg: #ffffff;
-  --border-color: #e2e8f0;
-  --accent: #0284c7;
-  --tag-bg: #e0f2fe;
+  --pill-bg: #ffffff;
+  --pill-border: #dee2e6;
+  --pill-blue-bg: #eff6ff;
+  --pill-blue-text: #3b82f6;
 }
 
 [data-theme='dark'] {
-  /* 다크 모드 */
-  --bg-color: #0f172a;
-  --text-main: #f8fafc;
-  --text-sub: #94a3b8;
-  --card-bg: #1e293b;
-  --border-color: #334155;
-  --accent: #38bdf8;
-  --tag-bg: #1e3a5f;
+  --bg-main: #121212;
+  --bg-nav: rgba(18, 18, 18, 0.9);
+  --text-main: #f8f9fa;
+  --text-sub: #adb5bd;
+  --text-title: #6c757d;
+  --accent-blue: #60a5fa;
+  --border-color: #2b3035;
+  --card-bg: #1e1e1e;
+  --pill-bg: #2b3035;
+  --pill-border: #495057;
+  --pill-blue-bg: #1e3a5f;
+  --pill-blue-text: #60a5fa;
 }
 
 /* ==========================================
@@ -28,205 +36,309 @@
    ========================================== */
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  background-color: var(--bg-color);
+  background-color: var(--bg-main);
   color: var(--text-main);
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
   transition: background-color 0.3s ease, color 0.3s ease;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-}
-
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-/* ==========================================
-   3. Header & Social
-   ========================================== */
-.header {
-  padding: 80px 0 40px;
-  border-bottom: 1px solid var(--border-color);
-}
-
-.header h1 {
-  font-size: 2.5rem;
-  margin: 0 0 8px;
-}
-
-.header .title {
-  font-size: 1.25rem;
-  color: var(--accent);
-  margin: 0 0 16px;
-  font-weight: 600;
-}
-
-.header .bio {
-  color: var(--text-sub);
   line-height: 1.6;
 }
 
-.social-links {
-  margin-top: 20px;
+/* ==========================================
+   3. 네비게이션 바 (GNB)
+   ========================================== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 70px;
+  background-color: var(--bg-nav);
+  backdrop-filter: blur(8px); /* 뒤가 살짝 비치는 고급스러운 효과 */
+  border-bottom: 1px solid var(--border-color);
+  z-index: 1000;
   display: flex;
-  gap: 16px;
-}
-
-.social-links a {
-  color: var(--text-main);
-  transition: color 0.2s ease, transform 0.2s ease;
-  display: inline-flex;
   align-items: center;
 }
 
-.social-links a:hover {
-  color: var(--accent);
-  transform: translateY(-2px);
+.nav-container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-weight: 800;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.nav-links button {
+  background: none;
+  border: none;
+  color: var(--text-sub);
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.nav-links button:hover {
+  color: var(--text-main);
+}
+
+.theme-toggle-btn {
+  background: var(--card-bg) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* ==========================================
-   4. Sections & Cards (Skills, Projects)
+   4. 레이아웃 & 공통 섹션
    ========================================== */
+.main-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 100px 24px 60px; /* 상단 네비게이션 바 공간 확보 */
+}
+
 .section {
   padding: 60px 0;
   border-bottom: 1px solid var(--border-color);
 }
 
-.section h2 {
-  font-size: 1.8rem;
+.section:last-child {
+  border-bottom: none;
+}
+
+.section-title {
+  font-size: 0.85rem;
+  color: var(--text-title);
+  letter-spacing: 2px;
   margin-bottom: 24px;
-  color: var(--text-main);
+  font-weight: 600;
 }
 
-.skills-grid, .projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 20px;
+/* ==========================================
+   5. Hero 섹션 (메인 인사말)
+   ========================================== */
+.hero-section {
+  padding: 80px 0 60px;
+  text-align: center;
+  border-bottom: 1px solid var(--border-color);
 }
 
-.skill-card, .project-card {
-  background-color: var(--card-bg);
-  padding: 24px;
-  border-radius: 12px;
-  border: 1px solid var(--border-color);
-  transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.3s ease;
-}
-
-.skill-card:hover, .project-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--accent);
-}
-
-.skill-level {
+.badge {
   display: inline-block;
-  margin-top: 8px;
-  font-size: 0.875rem;
-  color: var(--accent);
+  background-color: var(--pill-blue-bg);
+  color: var(--accent-blue);
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.hero-section h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.3;
+  margin-bottom: 16px;
+}
+
+.highlight {
+  color: var(--accent-blue);
+}
+
+.hero-subtitle {
+  color: var(--text-sub);
+  font-size: 1.1rem;
+  margin-bottom: 32px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.btn-primary, .btn-secondary {
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background-color: var(--accent-blue);
+  color: #fff;
+  border: none;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+  background-color: var(--card-bg);
+  transform: translateY(-2px);
+}
+
+/* ==========================================
+   6. About & Skills 섹션
+   ========================================== */
+.about-text {
+  font-size: 1.05rem;
+  color: var(--text-main);
+  word-break: keep-all;
+}
+
+.skill-category {
+  margin-bottom: 24px;
+}
+
+.skill-category h3 {
+  font-size: 0.9rem;
+  color: var(--text-sub);
+  margin-bottom: 12px;
   font-weight: 500;
 }
 
 .tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin: 16px 0;
+  gap: 10px;
 }
 
-.tag {
-  background-color: var(--tag-bg);
-  color: var(--accent);
-  padding: 4px 10px;
-  border-radius: 12px;
-  font-size: 0.8rem;
-  font-weight: 500;
-}
-
-.link-btn {
-  display: inline-block;
-  color: var(--accent);
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.link-btn:hover {
-  text-decoration: underline;
-}
-
-/* ==========================================
-   5. Footer
-   ========================================== */
-footer {
-  text-align: center;
-  padding: 40px 0;
-  color: var(--text-sub);
+/* 흰색 바탕 회색 테두리 태그 */
+.tag-pill {
+  background-color: var(--pill-bg);
+  border: 1px solid var(--pill-border);
+  color: var(--text-main);
+  padding: 8px 16px;
+  border-radius: 24px;
   font-size: 0.9rem;
 }
 
+/* 연파랑 바탕 파란 텍스트 태그 */
+.tag-pill-blue {
+  background-color: var(--pill-blue-bg);
+  color: var(--pill-blue-text);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
 /* ==========================================
-   6. Theme Toggle Button
+   7. Projects 섹션
    ========================================== */
-.theme-toggle-btn {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 1000;
-  background-color: var(--card-bg);
-  color: var(--text-main);
-  border: 1px solid var(--border-color);
-  border-radius: 50%;
-  width: 44px;
-  height: 44px;
+.projects-list {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  flex-direction: column;
+  gap: 20px;
 }
 
-.theme-toggle-btn:hover {
-  transform: scale(1.1);
-  border-color: var(--accent);
+.project-card-modern {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  padding: 32px;
+  border-radius: 16px;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.project-card-modern:hover {
+  box-shadow: 0 10px 30px -10px rgba(0,0,0,0.05);
+  transform: translateY(-2px);
+}
+
+.project-name {
+  font-size: 1.4rem;
+  margin-bottom: 8px;
+}
+
+.project-role {
+  display: block;
+  color: var(--accent-blue);
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.project-desc {
+  color: var(--text-sub);
+  margin-bottom: 24px;
 }
 
 /* ==========================================
-   📱 7. 모바일 반응형 (화면 폭 768px 이하)
+   8. Contact 섹션
+   ========================================== */
+.contact-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.btn-contact {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-contact:hover {
+  border-color: var(--text-main);
+}
+
+/* ==========================================
+   📱 9. 모바일 반응형
    ========================================== */
 @media (max-width: 768px) {
-  .container {
-    padding: 0 16px;
+  .nav-links {
+    gap: 12px;
   }
 
-  .header {
-    padding: 60px 0 30px;
+  .nav-links button:not(.theme-toggle-btn) {
+    font-size: 0.85rem;
   }
 
-  .header h1 {
-    font-size: 2rem;
+  .hero-section h1 {
+    font-size: 2.2rem;
   }
 
-  .header .title {
-    font-size: 1.1rem;
-  }
-
-  .section {
-    padding: 40px 0;
-  }
-
-  /* 모바일에서는 그리드를 1열로 깔끔하게 정리 */
-  .skills-grid, .projects-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-
-  /* 모바일 토글 버튼 위치 및 크기 최적화 */
-  .theme-toggle-btn {
-    top: 16px;
-    right: 16px;
-    width: 40px;
-    height: 40px;
+  .project-card-modern {
+    padding: 24px;
   }
 }

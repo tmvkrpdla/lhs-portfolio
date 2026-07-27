@@ -55,19 +55,14 @@ function Experience(){
                         </h3>
 
                         <p>
-                            2021.04 ~ 현재
+                            2021.04 ~ 2026.07
                         </p>
 
                     </div>
 
-
-
                     <span className="period">
-
                         5년 4개월
-
                     </span>
-
 
                 </div>
 

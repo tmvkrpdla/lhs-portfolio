@@ -1,4 +1,14 @@
-function ProjectCard({ project, open }) {
+import {useState} from "react";
+
+import Lightbox from "yet-another-react-lightbox";
+
+import "yet-another-react-lightbox/styles.css";
+
+function ProjectCard({project, open}) {
+
+    const [imageOpen, setImageOpen] = useState(false);
+
+    const [image, setImage] = useState(null);
 
 
     return (
@@ -15,9 +25,15 @@ function ProjectCard({ project, open }) {
                     src={project.image}
                     className="project-image"
                     alt={project.title}
+                    onClick={(e) => {
+
+                        e.stopPropagation();
+
+                        project.openImage();
+
+                    }}
                 />
             }
-
 
 
             <div className="project-top">
@@ -46,7 +62,7 @@ function ProjectCard({ project, open }) {
             <div className="project-tech">
 
                 {
-                    project.tech.map(item=>(
+                    project.tech.map(item => (
 
                         <span
                             className="tag"

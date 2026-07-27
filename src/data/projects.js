@@ -8,7 +8,11 @@ const projects = [
 
         // period: "2021.04 ~ 현재",
 
-        image: `${import.meta.env.BASE_URL}projects/ami.png`,
+        images: [
+            `${import.meta.env.BASE_URL}projects/ami-1.png`,
+            `${import.meta.env.BASE_URL}projects/ami-2.png`,
+            `${import.meta.env.BASE_URL}projects/ami-3.png`
+        ],
 
         description:
             `
@@ -77,7 +81,10 @@ const projects = [
             "Chart.js"
         ],
 
-        image: `${import.meta.env.BASE_URL}projects/monitoring.png`
+        images: [
+            `${import.meta.env.BASE_URL}projects/monitoring.png`
+        ],
+
     },
 
 
@@ -88,7 +95,10 @@ const projects = [
 
         // period: "서비스 개발",
 
-        image: `${import.meta.env.BASE_URL}projects/admin.png`,
+        images: [
+            `${import.meta.env.BASE_URL}projects/admin.png`
+        ],
+
 
         description:
             `
@@ -123,7 +133,9 @@ const projects = [
     {
         title: "세대 사용자용 하이브리드 앱",
 
-        role: "Frontend & Backend Developer",
+        role: [
+            "Frontend & Backend Developer"
+        ],
 
         category: "Frontend / Mobile Web",
 
@@ -146,13 +158,17 @@ const projects = [
             "REST API"
         ],
 
-        image: `${import.meta.env.BASE_URL}projects/user-mobile.png`
+        images: [
+            `${import.meta.env.BASE_URL}projects/user-mobile.png`
+        ],
     },
 
     {
         title: "수요반응(DR) 정산 및 포인트 쇼핑 모바일 웹",
 
-        role: "Full Stack Developer",
+        role: [
+            "Full Stack Developer",
+        ],
 
         // period: "DR 서비스 개발",
 
@@ -176,7 +192,9 @@ const projects = [
             "MariaDB"
         ],
 
-        image: `${import.meta.env.BASE_URL}projects/dr.png`
+        images: [
+            `${import.meta.env.BASE_URL}projects/dr.png`,
+        ]
     },
 
     {
@@ -212,7 +230,9 @@ const projects = [
             "수기 관리 업무 감소"
         ],
 
-        image: `${import.meta.env.BASE_URL}projects/worker.png`
+        images: [
+            `${import.meta.env.BASE_URL}projects/worker.png`,
+        ]
 
 
     },

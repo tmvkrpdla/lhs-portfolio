@@ -6,8 +6,10 @@ function ProjectModal({project, close}) {
 
     return (
 
-        <div className="modal-bg"
-             onClick={close}>
+        <div
+            className="modal-bg"
+            onClick={close}
+        >
 
 
             <div
@@ -30,72 +32,86 @@ function ProjectModal({project, close}) {
 
 
                 <p className="project-category">
-
                     {project.category}
-
                 </p>
 
 
-                <h3>
-                    담당 업무
-                </h3>
+                {
+                    project.role?.length > 0 &&
+                    <>
+                        <h3>
+                            담당 업무
+                        </h3>
 
 
-                <ul>
+                        <ul>
 
-                    {
-                        project.role.map(item => (
+                            {
+                                project.role.map(item => (
 
-                            <li key={item}>
-                                {item}
-                            </li>
+                                    <li key={item}>
+                                        {item}
+                                    </li>
 
-                        ))
-                    }
+                                ))
+                            }
 
-                </ul>
-
-
-                <h3>
-                    기술 스택
-                </h3>
+                        </ul>
+                    </>
+                }
 
 
-                <div className="project-tech">
-
-                    {
-                        project.tech.map(item => (
-
-                            <span
-                                className="tag"
-                                key={item}>
-                                {item}
-                            </span>
-
-                        ))
-                    }
-
-                </div>
+                {
+                    project.tech?.length > 0 &&
+                    <>
+                        <h3>
+                            기술 스택
+                        </h3>
 
 
-                <h3>
-                    성과
-                </h3>
+                        <div className="project-tech">
+
+                            {
+                                project.tech.map(item => (
+
+                                    <span
+                                        className="tag"
+                                        key={item}
+                                    >
+                                        {item}
+                                    </span>
+
+                                ))
+                            }
+
+                        </div>
+                    </>
+                }
 
 
-                <ul>
+                {
+                    project.result?.length > 0 &&
+                    <>
+                        <h3>
+                            성과
+                        </h3>
 
-                    {
-                        project.result.map(item => (
 
-                            <li key={item}>
-                                {item}
-                            </li>
+                        <ul>
 
-                        ))
-                    }
+                            {
+                                project.result.map(item => (
 
-                </ul>
+                                    <li key={item}>
+                                        {item}
+                                    </li>
+
+                                ))
+                            }
+
+                        </ul>
+                    </>
+                }
 
 
             </div>

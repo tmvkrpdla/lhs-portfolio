@@ -14,16 +14,16 @@ function Projects() {
 
     const [imageOpen, setImageOpen] = useState(false);
 
-    const [image, setImage] = useState(null);
+    const [images, setImages] = useState([]);
+
+    const [imageIndex, setImageIndex] = useState(0);
 
 
     return (
 
         <>
 
-
             <section id="projects">
-
 
                 <div className="section-title">
                     PROJECTS
@@ -49,9 +49,11 @@ function Projects() {
                                 project={{
                                     ...project,
 
-                                    openImage: () => {
+                                    openImage: (index = 0) => {
 
-                                        setImage(project.image);
+                                        setImages(project.images);
+
+                                        setImageIndex(index);
 
                                         setImageOpen(true);
 
@@ -84,19 +86,15 @@ function Projects() {
 
 
             <Lightbox
-
                 open={imageOpen}
-
                 close={() => setImageOpen(false)}
-
-                slides={[
-                    {
-                        src: image
-                    }
-                ]}
-
+                index={imageIndex}
+                slides={
+                    images.map(img => ({
+                        src: img
+                    }))
+                }
             />
-
 
         </>
 

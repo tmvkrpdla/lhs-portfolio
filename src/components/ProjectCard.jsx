@@ -1,14 +1,11 @@
-import {useState} from "react";
+import {Swiper, SwiperSlide} from "swiper/react";
+import {Navigation, Pagination} from "swiper/modules";
 
-import Lightbox from "yet-another-react-lightbox";
-
-import "yet-another-react-lightbox/styles.css";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 function ProjectCard({project, open}) {
-
-    const [imageOpen, setImageOpen] = useState(false);
-
-    const [image, setImage] = useState(null);
 
 
     return (
@@ -18,23 +15,61 @@ function ProjectCard({project, open}) {
             onClick={open}
         >
 
-
             {
-                project.image &&
-                <img
-                    src={project.image}
-                    className="project-image"
-                    alt={project.title}
-                    onClick={(e) => {
+                project.images?.length > 0 &&
 
-                        e.stopPropagation();
+                <div
+                    className="project-image-area"
+                    onClick={(e) => e.stopPropagation()}
+                >
 
-                        project.openImage();
+                    <Swiper
 
-                    }}
-                />
+                        modules={[
+                            Navigation,
+                            Pagination
+                        ]}
+
+                        navigation
+
+                        pagination={{
+                            clickable: true
+                        }}
+
+                        spaceBetween={10}
+
+                        className="project-swiper"
+
+                        onClick={(swiper) => {
+
+                            const index = swiper.clickedIndex;
+
+                            project.openImage(index);
+
+                        }}
+
+                    >
+
+                        {
+                            project.images.map((img, index) => (
+
+                                <SwiperSlide key={index}>
+
+                                    <img
+                                        src={img}
+                                        className="project-image"
+                                        alt={project.title}
+                                    />
+
+                                </SwiperSlide>
+                            ))
+                        }
+
+
+                    </Swiper>
+
+                </div>
             }
-
 
             <div className="project-top">
 
@@ -49,9 +84,15 @@ function ProjectCard({project, open}) {
             </div>
 
 
-            <p className="project-role">
-                {project.role}
-            </p>
+            <div className="project-role">
+
+                {
+                    Array.isArray(project.role)
+                        ? project.role.join(" · ")
+                        : project.role
+                }
+
+            </div>
 
 
             <p className="project-desc">

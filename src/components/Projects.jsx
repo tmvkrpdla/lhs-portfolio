@@ -1,29 +1,70 @@
-import React from 'react';
+import { useState } from "react";
+import projects from "../data/projects";
+import ProjectCard from "./ProjectCard";
+import ProjectModal from "./ProjectModal";
 
-export default function Projects({ projects }) {
+
+function Projects() {
+
+    const [selected, setSelected] = useState(null);
+
+
     return (
-        <section className="section">
-            <div className="container">
-                <h2>Projects</h2>
-                <div className="projects-grid">
-                    {projects.map((project) => (
-                        <div key={project.id} className="project-card">
-                            <h3>{project.title}</h3>
-                            <p>{project.description}</p>
-                            <div className="tags">
-                                {project.techStack.map((tech, i) => (
-                                    <span key={i} className="tag">{tech}</span>
-                                ))}
-                            </div>
-                            {project.githubLink && (
-                                <a href={project.githubLink} target="_blank" rel="noreferrer" className="link-btn">
-                                    GitHub
-                                </a>
-                            )}
-                        </div>
-                    ))}
-                </div>
+
+        <section id="projects">
+
+
+            <div className="section-title">
+                PROJECTS
             </div>
+
+
+            <h2 className="section-heading">
+                주요 프로젝트
+            </h2>
+
+
+
+            <div className="project-grid">
+
+
+                {
+                    projects.map((project, index) => (
+
+
+                        <ProjectCard
+
+                            key={index}
+
+                            project={project}
+
+                            open={() => setSelected(project)}
+
+                        />
+
+
+                    ))
+                }
+
+
+            </div>
+
+
+
+            <ProjectModal
+
+                project={selected}
+
+                close={() => setSelected(null)}
+
+            />
+
+
         </section>
+
     );
+
 }
+
+
+export default Projects;

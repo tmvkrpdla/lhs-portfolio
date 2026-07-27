@@ -1,19 +1,109 @@
-import React from 'react';
+import profile from "../data/profile";
 
-export default function Skills({ skills }) {
+
+function Skills(){
+
+
+    const categories = [
+
+        {
+            title:"Backend",
+            items:profile.skills.backend
+        },
+
+        {
+            title:"Frontend",
+            items:profile.skills.frontend
+        },
+
+        {
+            title:"Database",
+            items:profile.skills.database
+        },
+
+        {
+            title:"Infra & Tools",
+            items:[
+                ...profile.skills.infra,
+                ...profile.skills.tools
+            ]
+        }
+
+    ];
+
+
+
     return (
-        <section className="section">
-            <div className="container">
-                <h2>Skills</h2>
-                <div className="skills-grid">
-                    {skills.map((skill, index) => (
-                        <div key={index} className="skill-card">
-                            <h3>{skill.name}</h3>
-                            <span className="skill-level">{skill.level}</span>
-                        </div>
-                    ))}
-                </div>
+
+        <section id="skills">
+
+
+            <div className="section-title">
+                SKILLS
             </div>
+
+
+            <h2 className="section-heading">
+
+                기술 스택
+
+            </h2>
+
+
+
+            <div className="skill-grid">
+
+
+                {
+                    categories.map((category,index)=>(
+
+
+                        <div
+                            className="skill-card card"
+                            key={index}
+                        >
+
+
+                            <h3>
+                                {category.title}
+                            </h3>
+
+
+                            <div className="skill-tags">
+
+
+                                {
+                                    category.items.map((skill)=>(
+
+                                        <span
+                                            className="tag"
+                                            key={skill}
+                                        >
+                                            {skill}
+                                        </span>
+
+                                    ))
+                                }
+
+
+                            </div>
+
+
+                        </div>
+
+
+                    ))
+                }
+
+
+            </div>
+
+
         </section>
+
     );
+
 }
+
+
+export default Skills;

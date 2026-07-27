@@ -1,16 +1,72 @@
-# React + Vite
+# 이호성 Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+## Backend Developer
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Java/Spring 기반 웹 서비스 개발자
 
-## React Compiler
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Career
 
-## Expanding the ESLint configuration
+㈜에너넷 서비스개발팀
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+2021.04 ~ 현재
+
+
+## Experience
+
+
+- Spring Boot 기반 서비스 개발
+- REST API 설계
+- MariaDB 데이터 설계
+- AWS EC2 운영
+- Jenkins CI/CD 관리
+
+
+## AMI 국가사업
+
+
+산업통상자원부 가정용 스마트플랫폼(AMI)
+
+- 전국 717개 단지
+- 약 50만 세대
+- 원격검침 데이터 관리 시스템
+
+
+## Tech Stack
+
+
+Backend
+
+- Java
+- Spring Boot
+- Spring Framework
+- MyBatis
+- QueryDSL
+
+
+Frontend
+
+- React
+- JSP
+- JavaScript
+
+
+Database
+
+- MariaDB
+- MySQL
+
+
+Infra
+
+- AWS
+- Nginx
+- Jenkins
+- Grafana
+
+
+## Deployment
+
+
+Vercel
